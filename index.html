@@ -118,7 +118,7 @@
   .hero-seal img{width:100%; filter:drop-shadow(0 8px 20px rgba(0,0,0,.35));}
   .hero-text{flex:1; min-width:280px;}
   .hero-text .eyebrow{color:var(--gold); font-weight:600; font-size:.85rem; margin-bottom:8px; display:block;}
-  .hero-text h1{color:#fff; font-size:2.1rem; margin-bottom:.3em; max-width:16ch;}
+  .hero-text h1{color:#fff; font-size:1.75rem; margin-bottom:.3em; max-width:40ch; line-height:1.35;}
   .hero-text p{color:#c7d4e3; max-width:58ch; font-size:1.02rem;}
   .hero-cta{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;}
   .btn{
@@ -248,6 +248,85 @@
 
   .section-note{color:var(--ink-soft); font-size:.9rem; max-width:70ch; margin-bottom:6px;}
   .subsection-title{font-size:1.25rem;}
+
+  /* ===== Dues dashboard ===== */
+  .dues-intro{color:var(--ink-soft); font-size:.92rem; max-width:72ch; margin:4px 0 22px;}
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:26px;}
+  .stat-box{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; border-top:4px solid var(--green);}
+  .stat-box.gold{border-top-color:var(--gold);}
+  .stat-box.navy{border-top-color:var(--navy);}
+  .stat-box .stat-label{font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); font-weight:600;}
+  .stat-box .stat-value{font-family:'Source Serif 4',serif; font-size:1.6rem; color:var(--navy-deep); margin:4px 0 2px;}
+  .stat-box .stat-sub{font-size:.82rem; color:var(--ink-soft);}
+  .badge-highlight{display:inline-block; background:var(--gold); color:var(--navy-deep); font-size:.7rem; font-weight:700; padding:2px 8px; border-radius:10px; margin-left:6px; vertical-align:middle;}
+
+  .dues-block{margin-bottom:34px;}
+  .dues-block h3.block-title{font-size:1.05rem; margin-bottom:4px;}
+  .dues-block p.block-sub{color:var(--ink-soft); font-size:.85rem; margin:0 0 14px;}
+
+  .chart-legend{display:flex; gap:18px; margin-bottom:10px; font-size:.82rem; color:var(--ink-soft);}
+  .chart-legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:12px; height:12px; border-radius:2px; display:inline-block;}
+  .swatch.paid{background:var(--green);}
+  .swatch.unpaid{background:var(--gold);}
+  .swatch.homeowners{background:var(--navy);}
+  .swatch.tenants{background:var(--gold);}
+
+  .barrow{display:flex; align-items:center; gap:10px; margin-bottom:7px;}
+  .barrow .b-label{width:38px; font-size:.8rem; color:var(--ink-soft); flex-shrink:0;}
+  .barrow .b-track{flex:1; background:#eef0ea; border-radius:3px; overflow:hidden; display:flex; height:20px;}
+  .barrow .b-seg-paid{background:var(--green); height:100%;}
+  .barrow .b-seg-unpaid{background:var(--gold); height:100%;}
+  .barrow .b-pct{width:96px; text-align:right; font-size:.78rem; color:var(--ink-soft); flex-shrink:0;}
+  .barrow .b-pct strong{color:var(--ink);}
+
+  .amt-barrow{display:flex; align-items:center; gap:10px; margin-bottom:7px;}
+  .amt-barrow .b-label{width:38px; font-size:.8rem; color:var(--ink-soft); flex-shrink:0;}
+  .amt-barrow .b-track{flex:1; background:#eef0ea; border-radius:3px; height:18px; position:relative;}
+  .amt-barrow .b-fill{background:var(--navy); height:100%; border-radius:3px;}
+  .amt-barrow .b-fill.tenants{background:var(--gold);}
+  .amt-barrow .b-amt{width:76px; text-align:right; font-size:.78rem; color:var(--ink-soft); flex-shrink:0;}
+
+  .cat-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px;}
+  .cat-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;}
+  .cat-card.top{border:2px solid var(--gold); background:var(--gold-tint);}
+  .cat-card .cat-name{font-weight:700; font-size:.92rem; color:var(--navy-deep); margin-bottom:4px;}
+  .cat-card .cat-amt{font-family:'Source Serif 4',serif; font-size:1.3rem; color:var(--ink); margin-bottom:4px;}
+  .cat-card .cat-pct{font-size:.8rem; color:var(--ink-soft);}
+  .cat-card .cat-bar{height:8px; border-radius:4px; background:#eef0ea; margin-top:8px; overflow:hidden;}
+  .cat-card .cat-bar-fill{height:100%; background:var(--green);}
+  .cat-card.top .cat-bar-fill{background:var(--gold);}
+
+  .expense-barrow{display:flex; align-items:center; gap:10px; margin-bottom:7px;}
+  .expense-barrow .b-label{width:38px; font-size:.8rem; color:var(--ink-soft); flex-shrink:0;}
+  .expense-barrow .b-track{flex:1; background:#eef0ea; border-radius:3px; height:20px; position:relative;}
+  .expense-barrow .b-fill{background:var(--navy); height:100%; border-radius:3px;}
+  .expense-barrow .b-fill.peak{background:#c0392b;}
+  .expense-barrow .b-amt{width:86px; text-align:right; font-size:.78rem; color:var(--ink-soft); flex-shrink:0;}
+  .expense-barrow .peak-tag{font-size:.68rem; font-weight:700; color:#c0392b; margin-left:6px;}
+
+  .balance-callout{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%); color:#fff;
+    border-radius:var(--radius); padding:26px 28px; margin-bottom:26px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  }
+  .balance-callout .bc-label{font-size:.85rem; color:#c7e0cf; text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
+  .balance-callout .bc-amount{font-family:'Source Serif 4',serif; font-size:2.1rem; color:#fff; margin:2px 0;}
+  .balance-callout .bc-note{font-size:.82rem; color:#c7e0cf; max-width:44ch;}
+
+  @media (max-width: 760px){
+    .stat-row, .cat-cards{grid-template-columns:1fr;}
+    .barrow .b-pct, .amt-barrow .b-amt, .expense-barrow .b-amt{width:70px; font-size:.72rem;}
+  }
+
+  .ledger-table{width:100%; border-collapse:collapse; background:var(--paper); font-size:.88rem; margin-top:4px;}
+  .ledger-table th, .ledger-table td{border:1px solid var(--line); padding:9px 12px; text-align:right;}
+  .ledger-table th:first-child, .ledger-table td:first-child{text-align:left;}
+  .ledger-table thead th{background:var(--navy); color:#fff; font-weight:600; font-size:.8rem;}
+  .ledger-table tbody tr:nth-child(even) td{background:#f7f9f5;}
+  .ledger-table tr.net-negative td.net-cell{color:#a3312a;}
+  .ledger-table tr.net-positive td.net-cell{color:var(--green-deep);}
+  .ledger-table tr.total-row td{background:var(--gold-tint); font-weight:700;}
+  .table-scroll{overflow-x:auto;}
   .section-divider{border:none; border-top:1px solid var(--line); margin:40px 0;}
 
   /* ===== Comments ===== */
@@ -351,6 +430,7 @@
         <a href="#gpedro-mass">Street Holy Mass</a>
         <a href="#gpedro-signage">Street Signages Post</a>
         <a href="#gpedro-solar">Street Solar Panel Installation</a>
+        <a href="#gpedro-submeter">CCTV Sub-Meter Installation</a>
       </div>
     </details>
 
@@ -359,6 +439,7 @@
       <div class="dropdown">
         <a href="#hoa-dues" data-duestab="payment">Member Payment</a>
         <a href="#hoa-dues" data-duestab="expenses">Expenses</a>
+        <a href="#hoa-dues" data-duestab="balance">Cash Balance</a>
       </div>
     </details>
 
@@ -395,8 +476,8 @@
     <div class="wrap">
       <div class="hero-seal"><img src="logo.png" alt="G. Pedro Homeowners Neighborhood Association seal" /></div>
       <div class="hero-text">
-        <span class="eyebrow">Welcome</span>
-        <h1>Serving the homeowners of G. Pedro Street since day one.</h1>
+        <span class="eyebrow">Welcome to a Community That Cares</span>
+        <h1>For generations, we have proudly served the homeowners of G. Pedro Street, fostering connection, progress, and a place everyone is proud to call home.</h1>
         <p>A neighborhood association working with Barangay New Zaniga to keep our streets safe, clean, and well looked after — from security and lighting to drainage and community support.</p>
         <div class="hero-cta">
           <a class="btn btn-gold" href="#projects">See our projects</a>
@@ -740,6 +821,31 @@
           </form>
         </div>
       </div>
+
+      <hr class="section-divider" />
+
+      <div id="gpedro-submeter">
+        <div class="section-head" style="margin-top:8px;">
+          <h3 class="subsection-title">CCTV Sub-Meter Installation</h3>
+          <p>The CCTV system's electricity meter was transferred from Jac's residence onto its own dedicated sub-meter. Starting October 2026, GPHA will shoulder this electricity bill directly as part of the Association's obligations.</p>
+        </div>
+        <p class="gallery-label">Installation pictures</p>
+        <div class="gallery-grid" id="submeter-gallery">
+          <!-- images injected by JS -->
+        </div>
+
+        <div class="comment-section" data-comments-key="gpedro-submeter">
+          <h3 class="comment-heading">Comments</h3>
+          <p class="comment-sub">Leave a kind word or a shout-out for the volunteers — let's keep it positive.</p>
+          <div class="comment-list"></div>
+          <form class="comment-form" onsubmit="return false;">
+            <input type="text" class="comment-name" placeholder="Your name" maxlength="60" required />
+            <textarea class="comment-text" placeholder="Write something nice..." maxlength="400" rows="3" required></textarea>
+            <div class="comment-error" role="alert"></div>
+            <button type="submit" class="btn btn-gold comment-submit">Post comment</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -750,20 +856,368 @@
       <div class="section-head">
         <span class="kicker">7. HOA Dues</span>
         <h2>Member payments &amp; expenses</h2>
-        <p>Financial records for the association.</p>
+        <p>Financial records for the association, based on the HOA's Master List, Expenses, and Balance records. Figures below cover January through September 2026.</p>
       </div>
 
       <div class="year-tabs" data-group="dues">
         <button class="year-tab active" data-duestab="payment">Member Payment</button>
         <button class="year-tab" data-duestab="expenses">Expenses</button>
+        <button class="year-tab" data-duestab="balance">Cash Balance</button>
       </div>
 
+      <!-- ===== MEMBER PAYMENT ===== -->
       <div class="year-panel active" data-group="dues" data-duestab="payment">
-        <p class="placeholder-note">We are working to incorporate the payments here.</p>
+        <p class="dues-intro">How many homeowners and tenants are current on dues each month, and how much each group has actually paid in.</p>
+
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-label">Homeowners paid — Sep 2026</div>
+            <div class="stat-value">16 / 23 <span style="font-size:.95rem; color:var(--ink-soft);">(70%)</span></div>
+            <div class="stat-sub">23 homeowner units on the Master List</div>
+          </div>
+          <div class="stat-box gold">
+            <div class="stat-label">Tenants paid — Sep 2026</div>
+            <div class="stat-value">6 / 16 <span style="font-size:.95rem; color:var(--ink-soft);">(38%)</span></div>
+            <div class="stat-sub">16 tenant units on the Master List</div>
+          </div>
+          <div class="stat-box navy">
+            <div class="stat-label">Combined dues collected, Jan–Sep</div>
+            <div class="stat-value">₱64,000</div>
+            <div class="stat-sub">₱48,600 from homeowners, ₱15,400 from tenants</div>
+          </div>
+        </div>
+
+        <div class="dues-block">
+          <h3 class="block-title">Homeowners — monthly payment status</h3>
+          <p class="block-sub">Share of the 23 homeowner units current on dues each month.</p>
+          <div class="chart-legend"><span><i class="swatch paid"></i>Paid</span><span><i class="swatch unpaid"></i>Unpaid</span></div>
+            <div class="barrow">
+              <span class="b-label">Jan</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:87%"></div><div class="b-seg-unpaid" style="width:13%"></div></div>
+              <span class="b-pct"><strong>20/23</strong> paid (87%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Feb</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:83%"></div><div class="b-seg-unpaid" style="width:17%"></div></div>
+              <span class="b-pct"><strong>19/23</strong> paid (83%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Mar</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:83%"></div><div class="b-seg-unpaid" style="width:17%"></div></div>
+              <span class="b-pct"><strong>19/23</strong> paid (83%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Apr</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:83%"></div><div class="b-seg-unpaid" style="width:17%"></div></div>
+              <span class="b-pct"><strong>19/23</strong> paid (83%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">May</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:78%"></div><div class="b-seg-unpaid" style="width:22%"></div></div>
+              <span class="b-pct"><strong>18/23</strong> paid (78%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Jun</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:78%"></div><div class="b-seg-unpaid" style="width:22%"></div></div>
+              <span class="b-pct"><strong>18/23</strong> paid (78%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Jul</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:74%"></div><div class="b-seg-unpaid" style="width:26%"></div></div>
+              <span class="b-pct"><strong>17/23</strong> paid (74%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Aug</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:74%"></div><div class="b-seg-unpaid" style="width:26%"></div></div>
+              <span class="b-pct"><strong>17/23</strong> paid (74%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Sep</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:70%"></div><div class="b-seg-unpaid" style="width:30%"></div></div>
+              <span class="b-pct"><strong>16/23</strong> paid (70%)</span>
+            </div>
+
+        </div>
+
+        <div class="dues-block">
+          <h3 class="block-title">Tenants — monthly payment status</h3>
+          <p class="block-sub">Share of the 16 tenant units current on dues each month.</p>
+          <div class="chart-legend"><span><i class="swatch paid"></i>Paid</span><span><i class="swatch unpaid"></i>Unpaid</span></div>
+
+            <div class="barrow">
+              <span class="b-label">Jan</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:62%"></div><div class="b-seg-unpaid" style="width:38%"></div></div>
+              <span class="b-pct"><strong>10/16</strong> paid (62%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Feb</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:50%"></div><div class="b-seg-unpaid" style="width:50%"></div></div>
+              <span class="b-pct"><strong>8/16</strong> paid (50%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Mar</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:50%"></div><div class="b-seg-unpaid" style="width:50%"></div></div>
+              <span class="b-pct"><strong>8/16</strong> paid (50%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Apr</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:44%"></div><div class="b-seg-unpaid" style="width:56%"></div></div>
+              <span class="b-pct"><strong>7/16</strong> paid (44%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">May</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:50%"></div><div class="b-seg-unpaid" style="width:50%"></div></div>
+              <span class="b-pct"><strong>8/16</strong> paid (50%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Jun</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:50%"></div><div class="b-seg-unpaid" style="width:50%"></div></div>
+              <span class="b-pct"><strong>8/16</strong> paid (50%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Jul</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:44%"></div><div class="b-seg-unpaid" style="width:56%"></div></div>
+              <span class="b-pct"><strong>7/16</strong> paid (44%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Aug</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:44%"></div><div class="b-seg-unpaid" style="width:56%"></div></div>
+              <span class="b-pct"><strong>7/16</strong> paid (44%)</span>
+            </div>
+            <div class="barrow">
+              <span class="b-label">Sep</span>
+              <div class="b-track"><div class="b-seg-paid" style="width:38%"></div><div class="b-seg-unpaid" style="width:62%"></div></div>
+              <span class="b-pct"><strong>6/16</strong> paid (38%)</span>
+            </div>
+
+        </div>
+
+        <div class="dues-block">
+          <h3 class="block-title">Monthly collection — Homeowners</h3>
+          <p class="block-sub">Actual pesos collected from homeowners each month.</p>
+
+            <div class="amt-barrow">
+              <span class="b-label">Jan</span>
+              <div class="b-track"><div class="b-fill " style="width:100%"></div></div>
+              <span class="b-amt">₱5,700</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Feb</span>
+              <div class="b-track"><div class="b-fill " style="width:100%"></div></div>
+              <span class="b-amt">₱5,700</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Mar</span>
+              <div class="b-track"><div class="b-fill " style="width:100%"></div></div>
+              <span class="b-amt">₱5,700</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Apr</span>
+              <div class="b-track"><div class="b-fill " style="width:100%"></div></div>
+              <span class="b-amt">₱5,700</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">May</span>
+              <div class="b-track"><div class="b-fill " style="width:95%"></div></div>
+              <span class="b-amt">₱5,400</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Jun</span>
+              <div class="b-track"><div class="b-fill " style="width:95%"></div></div>
+              <span class="b-amt">₱5,400</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Jul</span>
+              <div class="b-track"><div class="b-fill " style="width:89%"></div></div>
+              <span class="b-amt">₱5,100</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Aug</span>
+              <div class="b-track"><div class="b-fill " style="width:89%"></div></div>
+              <span class="b-amt">₱5,100</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Sep</span>
+              <div class="b-track"><div class="b-fill " style="width:84%"></div></div>
+              <span class="b-amt">₱4,800</span>
+            </div>
+
+        </div>
+
+        <div class="dues-block">
+          <h3 class="block-title">Monthly collection — Tenants</h3>
+          <p class="block-sub">Actual pesos collected from tenants each month.</p>
+
+            <div class="amt-barrow">
+              <span class="b-label">Jan</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:39%"></div></div>
+              <span class="b-amt">₱2,200</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Feb</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:32%"></div></div>
+              <span class="b-amt">₱1,800</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Mar</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:32%"></div></div>
+              <span class="b-amt">₱1,800</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Apr</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:28%"></div></div>
+              <span class="b-amt">₱1,600</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">May</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:32%"></div></div>
+              <span class="b-amt">₱1,800</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Jun</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:32%"></div></div>
+              <span class="b-amt">₱1,800</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Jul</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:28%"></div></div>
+              <span class="b-amt">₱1,600</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Aug</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:28%"></div></div>
+              <span class="b-amt">₱1,600</span>
+            </div>
+            <div class="amt-barrow">
+              <span class="b-label">Sep</span>
+              <div class="b-track"><div class="b-fill tenants" style="width:21%"></div></div>
+              <span class="b-amt">₱1,200</span>
+            </div>
+        </div>
       </div>
 
+      <!-- ===== EXPENSES ===== -->
       <div class="year-panel" data-group="dues" data-duestab="expenses">
-        <p class="placeholder-note">We are working to incorporate the payments here.</p>
+        <p class="dues-intro">Every recorded expense, January–September 2026, grouped into three categories so it's easy to see where the money actually goes.</p>
+
+        <div class="cat-cards">
+          <div class="cat-card top">
+            <div class="cat-name">Helps <span class="badge-highlight">Largest share</span></div>
+            <div class="cat-amt">₱65,500.00</div>
+            <div class="cat-pct">72.4% of total spending</div>
+            <div class="cat-bar"><div class="cat-bar-fill" style="width:72%"></div></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-name">Project Expenses</div>
+            <div class="cat-amt">₱22,376.75</div>
+            <div class="cat-pct">24.7% of total spending</div>
+            <div class="cat-bar"><div class="cat-bar-fill" style="width:25%"></div></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-name">Business-as-usual</div>
+            <div class="cat-amt">₱2,561.00</div>
+            <div class="cat-pct">2.8% of total spending</div>
+            <div class="cat-bar"><div class="cat-bar-fill" style="width:3%"></div></div>
+          </div>
+        </div>
+        <p class="section-note" style="margin-bottom:26px;">
+          <strong>Helps</strong> — officer salaries, and financial or funeral assistance to members. &nbsp;
+          <strong>Project expenses</strong> — one-off initiatives like CCTV, signages, solar lights, walkie-talkies, the Holy Mass gathering, tree trimming, and the sub-meter installation. &nbsp;
+          <strong>Business-as-usual</strong> — small routine supplies (walis, tie wraps, snacks).
+        </p>
+
+        <div class="dues-block">
+          <h3 class="block-title">Monthly expenses, January–September 2026</h3>
+          <p class="block-sub">February and June stand out as the two highest-spending months.</p>
+            <div class="expense-barrow">
+              <span class="b-label">Jan</span>
+              <div class="b-track"><div class="b-fill " style="width:58%"></div></div>
+              <span class="b-amt">₱10,470.00</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Feb</span>
+              <div class="b-track"><div class="b-fill peak" style="width:100%"></div></div>
+              <span class="b-amt">₱18,018.00</span><span class="peak-tag">★ Highest</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Mar</span>
+              <div class="b-track"><div class="b-fill " style="width:50%"></div></div>
+              <span class="b-amt">₱9,000.00</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Apr</span>
+              <div class="b-track"><div class="b-fill " style="width:50%"></div></div>
+              <span class="b-amt">₱9,040.00</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">May</span>
+              <div class="b-track"><div class="b-fill " style="width:50%"></div></div>
+              <span class="b-amt">₱9,000.00</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Jun</span>
+              <div class="b-track"><div class="b-fill peak" style="width:75%"></div></div>
+              <span class="b-amt">₱13,456.00</span><span class="peak-tag">2nd highest</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Jul</span>
+              <div class="b-track"><div class="b-fill " style="width:43%"></div></div>
+              <span class="b-amt">₱7,741.00</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Aug</span>
+              <div class="b-track"><div class="b-fill " style="width:35%"></div></div>
+              <span class="b-amt">₱6,350.00</span>
+            </div>
+            <div class="expense-barrow">
+              <span class="b-label">Sep</span>
+              <div class="b-track"><div class="b-fill " style="width:41%"></div></div>
+              <span class="b-amt">₱7,362.75</span>
+            </div>
+          <p class="section-note" style="margin-top:10px;">February was driven by the ₱10,000 purchase of 8 solar lights; June included the ₱4,406 Holy Mass gathering (food, fruits, candles) on top of regular salaries and funeral assistance.</p>
+        </div>
+
+        <div class="dues-block">
+          <h3 class="block-title">Total expenses, Jan–Sep 2026</h3>
+          <p class="stat-value" style="margin:0;">₱90,437.75</p>
+        </div>
+      </div>
+
+      <!-- ===== CASH BALANCE ===== -->
+      <div class="year-panel" data-group="dues" data-duestab="balance">
+        <p class="dues-intro">Cash on hand after all recorded expenses are deducted from incoming funds, January through September 2026.</p>
+
+        <div class="balance-callout">
+          <div>
+            <div class="bc-label">Cash on hand — as of September 2026</div>
+            <div class="bc-amount">₱8,408.25</div>
+            <div class="bc-note">Total incoming (₱98,846.00) minus total outgoing (₱90,437.75), January–September 2026.</div>
+          </div>
+        </div>
+
+        <div class="dues-block">
+          <h3 class="block-title">Monthly incoming, outgoing &amp; running balance</h3>
+          <p class="block-sub">"Net" is that month's incoming minus outgoing; "Running Balance" carries forward month to month.</p>
+          <div class="table-scroll">
+            <table class="ledger-table">
+              <thead>
+                <tr><th>Month</th><th>Incoming</th><th>Outgoing</th><th>Net</th><th>Running Balance</th></tr>
+              </thead>
+              <tbody>
+              <tr><td>January</td><td>₱40,746.00</td><td>₱10,470.00</td><td class="net-cell">+₱30,276.00</td><td>₱30,276.00</td></tr>
+              <tr><td>February</td><td>₱7,500.00</td><td>₱18,018.00</td><td class="net-cell">-₱10,518.00</td><td>₱19,758.00</td></tr>
+              <tr><td>March</td><td>₱7,500.00</td><td>₱9,000.00</td><td class="net-cell">-₱1,500.00</td><td>₱18,258.00</td></tr>
+              <tr><td>April</td><td>₱7,300.00</td><td>₱9,040.00</td><td class="net-cell">-₱1,740.00</td><td>₱16,518.00</td></tr>
+              <tr><td>May</td><td>₱7,200.00</td><td>₱9,000.00</td><td class="net-cell">-₱1,800.00</td><td>₱14,718.00</td></tr>
+              <tr><td>June</td><td>₱9,200.00</td><td>₱13,456.00</td><td class="net-cell">-₱4,256.00</td><td>₱10,462.00</td></tr>
+              <tr><td>July</td><td>₱6,700.00</td><td>₱7,741.00</td><td class="net-cell">-₱1,041.00</td><td>₱9,421.00</td></tr>
+              <tr><td>August</td><td>₱6,700.00</td><td>₱6,350.00</td><td class="net-cell">+₱350.00</td><td>₱9,771.00</td></tr>
+              <tr><td>September</td><td>₱6,000.00</td><td>₱7,362.75</td><td class="net-cell">-₱1,362.75</td><td>₱8,408.25</td></tr>
+              <tr class="total-row"><td>Total (Jan–Sep)</td><td>₱98,846.00</td><td>₱90,437.75</td><td class="net-cell">+₱8,408.25</td><td>₱8,408.25</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1092,6 +1546,29 @@
     });
   }
   buildSolarGallery('solar-gallery');
+
+  // ---- CCTV Sub-Meter Installation gallery ----
+  const submeterImages = Array.from({length: 4}, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    return 'submeter-' + n + '.jpg';
+  });
+  function buildSubmeterGallery(containerId){
+    const el = document.getElementById(containerId);
+    if(!el) return;
+    submeterImages.forEach((src, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'View CCTV sub-meter installation photo ' + (idx + 1));
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'CCTV sub-meter installation, photo ' + (idx + 1);
+      img.loading = 'lazy';
+      btn.appendChild(img);
+      btn.addEventListener('click', () => openLightbox(src, img.alt));
+      el.appendChild(btn);
+    });
+  }
+  buildSubmeterGallery('submeter-gallery');
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
