@@ -237,6 +237,12 @@
   }
   .cctv-card h3{font-size:.98rem; margin:0 0 4px;}
   .cctv-card p{font-size:.82rem; color:var(--ink-soft); margin:0;}
+  .cctv-card .cctv-thumb{
+    display:block; width:100%; border:none; padding:0; background:none; cursor:pointer;
+    margin-bottom:12px; border-radius:3px; overflow:hidden; aspect-ratio:4/3;
+  }
+  .cctv-card .cctv-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .cctv-card .cctv-thumb:hover img{opacity:.85;}
 
   /* ===== Contact ===== */
   .contact-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
@@ -580,6 +586,10 @@
                     <li>Neighbor solicitation drive to gather financial help for Hapi's medical needs</li>
                     <li>HOA officers' continuing support, including planned visitation and prayer offering</li>
                   </ul>
+                  <p class="gallery-label">Wheelchair pictures</p>
+                  <div class="gallery-grid" id="wheelchair-gallery">
+                    <!-- images injected by JS -->
+                  </div>
                 </div>
               </div>
             </details>
@@ -679,13 +689,34 @@
         <p>These are the current monitored points along and around G. Pedro Street.</p>
       </div>
       <div class="cctv-grid">
-        <div class="cctv-card"><div class="icon">1</div><h3>Gate1</h3><p>Entry gate camera</p></div>
-        <div class="cctv-card"><div class="icon">2</div><h3>Gate2</h3><p>Entry gate camera</p></div>
-        <div class="cctv-card"><div class="icon">3</div><h3>Oney1</h3><p>Street coverage</p></div>
-        <div class="cctv-card"><div class="icon">4</div><h3>Oney2</h3><p>Street coverage</p></div>
-        <div class="cctv-card"><div class="icon">5</div><h3>Jac</h3><p>Street coverage</p></div>
-        <div class="cctv-card"><div class="icon">6</div><h3>Ela</h3><p>Street coverage</p></div>
-        <div class="cctv-card"><div class="icon">7</div><h3>Remy</h3><p>Street coverage</p></div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-gate1.jpg" data-alt="Gate1 CCTV camera"><img src="cctv-gate1.jpg" alt="Gate1 CCTV camera" loading="lazy" /></button>
+          <div class="icon">1</div><h3>Gate1</h3><p>Entry gate camera</p>
+        </div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-gate2.jpg" data-alt="Gate2 CCTV camera"><img src="cctv-gate2.jpg" alt="Gate2 CCTV camera" loading="lazy" /></button>
+          <div class="icon">2</div><h3>Gate2</h3><p>Entry gate camera</p>
+        </div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-oney1.jpg" data-alt="Oney1 CCTV camera"><img src="cctv-oney1.jpg" alt="Oney1 CCTV camera" loading="lazy" /></button>
+          <div class="icon">3</div><h3>Oney1</h3><p>Street coverage</p>
+        </div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-oney2.jpg" data-alt="Oney2 CCTV camera"><img src="cctv-oney2.jpg" alt="Oney2 CCTV camera" loading="lazy" /></button>
+          <div class="icon">4</div><h3>Oney2</h3><p>Street coverage</p>
+        </div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-jac.jpg" data-alt="Jac CCTV camera"><img src="cctv-jac.jpg" alt="Jac CCTV camera" loading="lazy" /></button>
+          <div class="icon">5</div><h3>Jac</h3><p>Street coverage</p>
+        </div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-ela.jpg" data-alt="Ela CCTV camera"><img src="cctv-ela.jpg" alt="Ela CCTV camera" loading="lazy" /></button>
+          <div class="icon">6</div><h3>Ela</h3><p>Street coverage</p>
+        </div>
+        <div class="cctv-card">
+          <button type="button" class="cctv-thumb" data-src="cctv-remy.jpg" data-alt="Remy CCTV camera"><img src="cctv-remy.jpg" alt="Remy CCTV camera" loading="lazy" /></button>
+          <div class="icon">7</div><h3>Remy</h3><p>Street coverage</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1570,6 +1601,29 @@
   }
   buildSubmeterGallery('submeter-gallery');
 
+  // ---- Wheelchair donation gallery (March, Hapi assistance) ----
+  const wheelchairImages = Array.from({length: 5}, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    return 'wheelchair-' + n + '.jpg';
+  });
+  function buildWheelchairGallery(containerId){
+    const el = document.getElementById(containerId);
+    if(!el) return;
+    wheelchairImages.forEach((src, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'View wheelchair photo ' + (idx + 1));
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Wheelchair donated for Hapi, photo ' + (idx + 1);
+      img.loading = 'lazy';
+      btn.appendChild(img);
+      btn.addEventListener('click', () => openLightbox(src, img.alt));
+      el.appendChild(btn);
+    });
+  }
+  buildWheelchairGallery('wheelchair-gallery');
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   function openLightbox(src, alt){
@@ -1580,6 +1634,11 @@
   document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') lightbox.classList.remove('open'); });
+
+  // ---- CCTV location thumbnails ----
+  document.querySelectorAll('.cctv-thumb').forEach(btn => {
+    btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-src'), btn.getAttribute('data-alt')));
+  });
 
   // ---- Comment sections: local, positive-only, moderated ----
   // Note: comments are stored in this browser's local storage only. They are
