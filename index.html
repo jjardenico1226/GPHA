@@ -205,6 +205,10 @@
   }
   .gallery-grid img{width:100%; height:100%; object-fit:cover; display:block;}
   .gallery-grid button:hover img{opacity:.85;}
+  .inline-video{
+    display:block; max-width:360px; width:100%; border-radius:3px; border:1px solid var(--line);
+    background:#000;
+  }
 
   /* lightbox */
   .lightbox{
@@ -839,6 +843,12 @@
         <div class="gallery-grid" id="solar-gallery">
           <!-- images injected by JS -->
         </div>
+
+        <p class="gallery-label" style="margin-top:18px;">Solar panel video</p>
+        <video class="inline-video" controls preload="metadata" playsinline>
+          <source src="solar-video.mp4" type="video/mp4" />
+          Your browser doesn't support embedded video. <a href="solar-video.mp4">Download the video</a> instead.
+        </video>
 
         <div class="comment-section" data-comments-key="gpedro-solar">
           <h3 class="comment-heading">Comments</h3>
@@ -1556,7 +1566,7 @@
   buildSignageGallery('signage-gallery');
 
   // ---- Street Solar Panel Installation gallery ----
-  const solarImages = Array.from({length: 5}, (_, i) => {
+  const solarImages = Array.from({length: 6}, (_, i) => {
     const n = String(i + 1).padStart(2, '0');
     return 'solar-' + n + '.jpg';
   });
