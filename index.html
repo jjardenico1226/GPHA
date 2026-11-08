@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+  // Self-cleanup: unregister any leftover service worker and clear its caches
+  // from a previous app deployed at this same GitHub Pages URL, so visitors
+  // whose browsers cached that old app actually see this current site.
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      regs.forEach(reg => reg.unregister());
+    }).catch(() => {});
+  }
+  if (window.caches && caches.keys) {
+    caches.keys().then(names => {
+      names.forEach(name => caches.delete(name));
+    }).catch(() => {});
+  }
+</script>
 <title>G. Pedro Homeowners Neighborhood Association — Brgy. New Zaniga, Mandaluyong</title>
 <meta name="description" content="Official website of the G. Pedro Homeowners Neighborhood Association, Barangay New Zaniga, Mandaluyong City." />
 <link rel="icon" href="logo.png" />
