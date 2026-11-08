@@ -221,16 +221,29 @@
   .gallery-grid img{width:100%; height:100%; object-fit:cover; display:block;}
   .gallery-grid button:hover img{opacity:.85;}
   .christmas-banner{
-    display:flex; align-items:center; gap:36px; padding:36px 0; flex-wrap:wrap;
+    display:flex; align-items:center; gap:40px; padding:44px 0; flex-wrap:wrap;
   }
-  .christmas-photo{width:220px; flex-shrink:0; border-radius:6px; overflow:hidden; box-shadow:0 10px 24px rgba(0,0,0,.18);}
+  .christmas-photo{width:380px; flex-shrink:0; border-radius:8px; overflow:hidden; box-shadow:0 16px 36px rgba(0,0,0,.25); border:4px solid #fff;}
   .christmas-photo img{width:100%; display:block;}
   .christmas-text{flex:1; min-width:260px;}
-  .christmas-text h2{font-size:1.6rem; margin-bottom:.3em; color:var(--navy-deep);}
-  .christmas-text p{color:var(--ink-soft); font-size:1rem; margin-bottom:18px; max-width:52ch;}
+  .christmas-text h2{font-size:1.9rem; margin-bottom:.3em; color:var(--navy-deep);}
+  .christmas-text p{color:var(--ink-soft); font-size:1.05rem; margin-bottom:20px; max-width:52ch;}
+  .btn-vote-blink{
+    display:inline-block; padding:13px 24px; border-radius:var(--radius);
+    text-decoration:none; font-weight:700; font-size:1rem; border:2px solid #7a1414;
+    background:#c0392b; color:#2e8b3e;
+    animation:vote-blink 1.1s steps(1,end) infinite;
+  }
+  @keyframes vote-blink{
+    0%, 49%{ background:#c0392b; color:#3fae55; }
+    50%, 100%{ background:#8e1f17; color:#1f5c2c; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-vote-blink{ animation:none; }
+  }
   @media (max-width:640px){
     .christmas-banner{flex-direction:column; text-align:center;}
-    .christmas-photo{width:180px;}
+    .christmas-photo{width:280px;}
     .christmas-text p{max-width:none;}
   }
   .inline-video{
@@ -510,21 +523,6 @@
 
 
   <!-- ========== HOME ========== -->
-  <section id="home" class="hero">
-    <div class="wrap">
-      <div class="hero-seal"><img src="logo.png" alt="G. Pedro Homeowners Neighborhood Association seal" /></div>
-      <div class="hero-text">
-        <span class="eyebrow">Welcome to a Community That Cares</span>
-        <h1>For generations, we have proudly served the homeowners of G. Pedro Street, fostering connection, progress, and a place everyone is proud to call home.</h1>
-        <p>A neighborhood association working with Barangay New Zaniga to keep our streets safe, clean, and well looked after — from security and lighting to drainage and community support.</p>
-        <div class="hero-cta">
-          <a class="btn btn-gold" href="#projects">See our projects</a>
-          <a class="btn btn-outline" href="#contact">Contact the HOA</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="christmas-announcement" class="bg-gold">
     <div class="wrap">
       <div class="christmas-banner">
@@ -535,7 +533,22 @@
           <span class="eyebrow" style="color:var(--green-deep);">🎄 Save the Date</span>
           <h2>Get ready for our Neighborhood Christmas Party!</h2>
           <p>Watch out for upcoming announcements and exciting updates.</p>
-          <a class="btn btn-gold" href="https://gpha-christmas-poll.jjardenico1226.workers.dev/" target="_blank" rel="noopener">Vote for the Party Date &amp; Theme ↗</a>
+          <a class="btn btn-vote-blink" href="https://gpha-christmas-poll.jjardenico1226.workers.dev/" target="_blank" rel="noopener">Vote for the Party Date &amp; Theme ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="home" class="hero">
+    <div class="wrap">
+      <div class="hero-seal"><img src="logo.png" alt="G. Pedro Homeowners Neighborhood Association seal" /></div>
+      <div class="hero-text">
+        <span class="eyebrow">Welcome to a Community That Cares</span>
+        <h1>For generations, we have proudly served the homeowners of G. Pedro Street, fostering connection, progress, and a place everyone is proud to call home.</h1>
+        <p>A neighborhood association working with Barangay New Zaniga to keep our streets safe, clean, and well looked after — from security and lighting to drainage and community support.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#projects">See our projects</a>
+          <a class="btn btn-outline" href="#contact">Contact the HOA</a>
         </div>
       </div>
     </div>
