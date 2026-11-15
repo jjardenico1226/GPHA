@@ -241,6 +241,11 @@
   @media (prefers-reduced-motion: reduce){
     .btn-vote-blink{ animation:none; }
   }
+  .btn-vote-confirmed{
+    display:inline-block; padding:13px 24px; border-radius:var(--radius);
+    font-weight:700; font-size:1rem; border:2px solid #7a1414;
+    background:#c0392b; color:#3fae55;
+  }
   @media (max-width:640px){
     .christmas-banner{flex-direction:column; text-align:center;}
     .christmas-photo{width:280px;}
@@ -482,6 +487,7 @@
         <a href="#gpedro-signage">Street Signages Post</a>
         <a href="#gpedro-solar">Street Solar Panel Installation</a>
         <a href="#gpedro-submeter">CCTV Sub-Meter Installation</a>
+        <a href="#gpedro-ethernet">CCTV Ethernet Cable Re-layout</a>
       </div>
     </details>
 
@@ -533,7 +539,7 @@
           <span class="eyebrow" style="color:var(--green-deep);">🎄 Save the Date</span>
           <h2>Get ready for our Neighborhood Christmas Party!</h2>
           <p>Watch out for upcoming announcements and exciting updates.</p>
-          <a class="btn btn-vote-blink" href="https://gpha-christmas-poll.jjardenico1226.workers.dev/" target="_blank" rel="noopener">Vote for the Party Date &amp; Theme ↗</a>
+          <span class="btn btn-vote-confirmed">🎉 See you on December 12, 2026 at 6PM!</span>
         </div>
       </div>
     </div>
@@ -747,6 +753,13 @@
                     <!-- images injected by JS -->
                   </div>
                 </div>
+                <div class="proj-item">
+                  <span class="proj-title">2. Annual Christmas Party Planning Meeting</span>
+                  <p class="gallery-label">Meeting pictures</p>
+                  <div class="gallery-grid" id="xmas-meeting-gallery">
+                    <!-- images injected by JS -->
+                  </div>
+                </div>
               </div>
             </details>
 
@@ -949,6 +962,31 @@
         </div>
 
         <div class="comment-section" data-comments-key="gpedro-submeter">
+          <h3 class="comment-heading">Comments</h3>
+          <p class="comment-sub">Leave a kind word or a shout-out for the volunteers — let's keep it positive.</p>
+          <div class="comment-list"></div>
+          <form class="comment-form" onsubmit="return false;">
+            <input type="text" class="comment-name" placeholder="Your name" maxlength="60" required />
+            <textarea class="comment-text" placeholder="Write something nice..." maxlength="400" rows="3" required></textarea>
+            <div class="comment-error" role="alert"></div>
+            <button type="submit" class="btn btn-gold comment-submit">Post comment</button>
+          </form>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div id="gpedro-ethernet">
+        <div class="section-head" style="margin-top:8px;">
+          <h3 class="subsection-title">CCTV Ethernet Cable Re-layout</h3>
+          <p>Re-routed the CCTV ethernet cable to the new modem location at Jac Brown's residence.</p>
+        </div>
+        <p class="gallery-label">Re-layout pictures</p>
+        <div class="gallery-grid" id="gpedro-ethernet-gallery">
+          <!-- images injected by JS -->
+        </div>
+
+        <div class="comment-section" data-comments-key="gpedro-ethernet">
           <h3 class="comment-heading">Comments</h3>
           <p class="comment-sub">Leave a kind word or a shout-out for the volunteers — let's keep it positive.</p>
           <div class="comment-list"></div>
@@ -1735,7 +1773,7 @@
   buildWheelchairGallery('wheelchair-gallery');
 
   // ---- CCTV Ethernet Cable Re-layout gallery (November) ----
-  const ethernetImages = Array.from({length: 4}, (_, i) => {
+  const ethernetImages = Array.from({length: 6}, (_, i) => {
     const n = String(i + 1).padStart(2, '0');
     return 'ethernet-' + n + '.jpg';
   });
@@ -1756,6 +1794,30 @@
     });
   }
   buildEthernetGallery('ethernet-gallery');
+  buildEthernetGallery('gpedro-ethernet-gallery');
+
+  // ---- Annual Christmas Party Planning Meeting gallery (November) ----
+  const xmasMeetingImages = Array.from({length: 2}, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    return 'xmas-meeting-' + n + '.jpg';
+  });
+  function buildXmasMeetingGallery(containerId){
+    const el = document.getElementById(containerId);
+    if(!el) return;
+    xmasMeetingImages.forEach((src, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'View Christmas party planning meeting photo ' + (idx + 1));
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Annual Christmas Party Planning Meeting, photo ' + (idx + 1);
+      img.loading = 'lazy';
+      btn.appendChild(img);
+      btn.addEventListener('click', () => openLightbox(src, img.alt));
+      el.appendChild(btn);
+    });
+  }
+  buildXmasMeetingGallery('xmas-meeting-gallery');
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
