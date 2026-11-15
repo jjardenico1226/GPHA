@@ -246,6 +246,32 @@
     font-weight:700; font-size:1rem; border:2px solid #7a1414;
     background:#c0392b; color:#3fae55;
   }
+  .btn-donate-blink{
+    display:inline-block; padding:12px 22px; border-radius:var(--radius);
+    text-decoration:none; font-weight:700; font-size:.95rem; border:2px solid #1d4b28;
+    background:#3fae55; color:#fff;
+    animation:donate-blink 1.1s steps(1,end) infinite;
+  }
+  @keyframes donate-blink{
+    0%, 49%{ background:#3fae55; color:#fff; }
+    50%, 100%{ background:#2c7d3d; color:#e8f5ec; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-donate-blink{ animation:none; }
+  }
+  .donate-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;}
+  .donate-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:24px;}
+  .donate-card h3{font-size:1.15rem; margin-bottom:12px; color:var(--navy-deep);}
+  .donate-card ul{margin:0 0 16px; padding-left:1.2em; color:var(--ink-soft); font-size:.95rem;}
+  .donate-card ul li{margin-bottom:6px;}
+  .donate-qr{max-width:240px; width:100%; display:block; margin:0 auto; border-radius:6px; border:1px solid var(--line);}
+  .donate-thanks{
+    text-align:center; font-family:'Source Serif 4',serif; font-size:1.25rem; color:var(--navy-deep);
+    padding-top:12px; border-top:1px dashed var(--line);
+  }
+  @media (max-width:700px){
+    .donate-grid{grid-template-columns:1fr;}
+  }
   @media (max-width:640px){
     .christmas-banner{flex-direction:column; text-align:center;}
     .christmas-photo{width:280px;}
@@ -540,8 +566,43 @@
           <h2>Get ready for our Neighborhood Christmas Party!</h2>
           <p>Watch out for upcoming announcements and exciting updates.</p>
           <span class="btn btn-vote-confirmed">🎉 See you on December 12, 2026 at 6PM!</span>
+          <div style="margin-top:14px;">
+            <a class="btn btn-donate-blink" href="#donate">🎁 Donate to the Christmas Party</a>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="donate" class="bg-green">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Christmas Party</span>
+        <h2>Help make our Christmas Party special!</h2>
+        <p>However you're able to give — cash or in-kind — every bit helps make this year's gathering a joy for the whole street.</p>
+      </div>
+
+      <div class="donate-grid">
+        <div class="donate-card">
+          <h3>1. Cash</h3>
+          <ul>
+            <li>You may give it to our official Treasurer — <strong>GCash 0927-994-4479, Jeffrey J.</strong></li>
+            <li>Or scan the QR code below (name shown as JE****Y J.)</li>
+          </ul>
+          <img class="donate-qr" src="donate-gcash-qr.jpg" alt="GCash QR code for Jeffrey J., mobile number 0927 994 4479" />
+        </div>
+        <div class="donate-card">
+          <h3>2. In-Kind</h3>
+          <ul>
+            <li>Food or refreshments</li>
+            <li>Raffle prizes</li>
+            <li>Gift packs</li>
+            <li>Or any other items you'd like to share</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="donate-thanks">Thank you for your generosity!! 🎄<br>Merry Christmas and Happy New Year!!!!</p>
     </div>
   </section>
 
