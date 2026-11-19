@@ -81,7 +81,7 @@
     padding:16px 24px;
   }
   .header-inner img.seal{width:64px; height:auto; flex-shrink:0;}
-  .header-inner img.seal-secondary{width:56px; margin-left:-4px;}
+  .header-inner img.seal-secondary{width:56px; margin-left:auto;}
   .header-titles h1{
     color:#fff; font-size:1.35rem; margin:0; letter-spacing:.2px;
   }
@@ -130,7 +130,7 @@
     color:#eef2f6; position:relative; overflow:hidden;
   }
   .hero .wrap{display:flex; align-items:center; gap:44px; padding:56px 24px 48px; flex-wrap:wrap;}
-  .hero-seal{width:180px; flex-shrink:0;}
+  .hero-seal{width:215px; flex-shrink:0;}
   .hero-seal img{width:100%; filter:drop-shadow(0 8px 20px rgba(0,0,0,.35));}
   .hero-text{flex:1; min-width:280px;}
   .hero-text .eyebrow{color:var(--gold); font-weight:600; font-size:.85rem; margin-bottom:8px; display:block;}
@@ -226,16 +226,6 @@
     display:flex; align-items:center; gap:40px; padding:44px 0; flex-wrap:wrap;
   }
   .christmas-photo{width:380px; flex-shrink:0; border-radius:8px; overflow:hidden; box-shadow:0 16px 36px rgba(0,0,0,.25); border:4px solid #fff;}
-  .christmas-photo img{animation:santa-dance 1.4s ease-in-out infinite;}
-  @keyframes santa-dance{
-    0%, 100%{ transform:rotate(-3deg) translateY(0); }
-    25%{ transform:rotate(2deg) translateY(-6px); }
-    50%{ transform:rotate(-2deg) translateY(0); }
-    75%{ transform:rotate(3deg) translateY(-6px); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .christmas-photo img{ animation:none; }
-  }
   .christmas-photo img{width:100%; display:block;}
   .christmas-text{flex:1; min-width:260px;}
   .christmas-text h2{font-size:1.9rem; margin-bottom:.3em; color:var(--navy-deep);}
@@ -486,7 +476,9 @@
   @media (max-width: 860px){
     .quick-grid, .contact-grid{grid-template-columns:1fr;}
     .cctv-grid{grid-template-columns:repeat(2,1fr);}
-    .hero .wrap{padding:40px 24px;}
+    .hero .wrap{padding:40px 24px; flex-direction:column; align-items:center; text-align:center;}
+    .hero-text{text-align:center;}
+    .hero-cta{justify-content:center;}
     .hero-text h1{font-size:1.6rem;}
     nav.mainnav .wrap{flex-direction:column;}
     nav.mainnav a.toplink, nav.mainnav details summary{border-right:none; border-bottom:1px solid rgba(255,255,255,.08);}
@@ -516,11 +508,11 @@
 <header class="site">
   <div class="wrap header-inner">
     <img class="seal" src="logo.png" alt="G. Pedro Homeowners Neighborhood Association official seal" />
-    <img class="seal seal-secondary" src="mandaluyong-seal.png" alt="City of Mandaluyong official seal" />
     <div class="header-titles">
       <h1>G. Pedro Homeowners Neighborhood Association</h1>
       <p>Barangay New Zaniga, Mandaluyong City</p>
     </div>
+    <img class="seal seal-secondary" src="mandaluyong-seal.png" alt="City of Mandaluyong official seal" />
   </div>
 </header>
 
