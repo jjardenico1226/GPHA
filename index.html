@@ -81,6 +81,7 @@
     padding:16px 24px;
   }
   .header-inner img.seal{width:64px; height:auto; flex-shrink:0;}
+  .header-inner img.seal-secondary{width:56px; margin-left:-4px;}
   .header-titles h1{
     color:#fff; font-size:1.35rem; margin:0; letter-spacing:.2px;
   }
@@ -146,7 +147,8 @@
   .btn-outline:hover{border-color:var(--gold); color:var(--gold);}
 
   /* ===== Sections generic ===== */
-  main section{padding:56px 0; border-bottom:1px solid var(--line);}
+  main > section{padding:56px 0; border-bottom:1px solid var(--line); display:none;}
+  main > section.page-visible{display:block;}
   main section:last-of-type{border-bottom:none;}
   main section.bg-green{background:var(--cream);}
   main section.bg-gold{background:var(--gold-tint);}
@@ -286,6 +288,17 @@
     .christmas-banner{flex-direction:column; text-align:center;}
     .christmas-photo{width:280px;}
     .christmas-text p{max-width:none;}
+  }
+  .captain-banner{
+    display:flex; align-items:center; gap:28px; margin-top:36px; padding-top:32px;
+    border-top:1px solid var(--line); flex-wrap:wrap;
+  }
+  .captain-photo{width:140px; height:140px; object-fit:cover; object-position:top center; border-radius:50%; border:4px solid var(--gold); flex-shrink:0; background:#fff;}
+  .captain-text{flex:1; min-width:240px;}
+  .captain-text h3{color:var(--navy-deep); font-size:1.3rem; margin:2px 0 2px;}
+  .captain-text p{color:var(--ink-soft); margin:0 0 14px; font-size:.95rem;}
+  @media (max-width:640px){
+    .captain-banner{flex-direction:column; text-align:center;}
   }
   .inline-video{
     display:block; max-width:360px; width:100%; border-radius:3px; border:1px solid var(--line);
@@ -503,6 +516,7 @@
 <header class="site">
   <div class="wrap header-inner">
     <img class="seal" src="logo.png" alt="G. Pedro Homeowners Neighborhood Association official seal" />
+    <img class="seal seal-secondary" src="mandaluyong-seal.png" alt="City of Mandaluyong official seal" />
     <div class="header-titles">
       <h1>G. Pedro Homeowners Neighborhood Association</h1>
       <p>Barangay New Zaniga, Mandaluyong City</p>
@@ -587,7 +601,7 @@
 
 
   <!-- ========== HOME ========== -->
-  <section id="christmas-announcement" class="bg-gold">
+  <section id="christmas-announcement" class="bg-gold page-visible">
     <div class="wrap">
       <div class="christmas-banner">
         <div class="christmas-photo">
@@ -638,7 +652,7 @@
     </div>
   </section>
 
-  <section id="home" class="hero">
+  <section id="home" class="hero page-visible">
     <div class="wrap">
       <div class="hero-seal"><img src="logo.png" alt="G. Pedro Homeowners Neighborhood Association seal" /></div>
       <div class="hero-text">
@@ -653,7 +667,7 @@
     </div>
   </section>
 
-  <section id="home-quick" class="bg-green" style="padding-top:48px;">
+  <section id="home-quick" class="bg-green page-visible" style="padding-top:48px;">
     <div class="wrap">
       <div class="quick-grid">
         <div class="quick-card">
@@ -670,6 +684,16 @@
           <h3>Emergency numbers</h3>
           <p>Police, fire, hospital, and disaster hotlines for Mandaluyong City, on hand when you need them.</p>
           <a href="#contact">Get emergency numbers →</a>
+        </div>
+      </div>
+
+      <div class="captain-banner">
+        <img class="captain-photo" src="captain-liza-cruz.png" alt="Barangay Captain Elizabeth Paler Cruz" />
+        <div class="captain-text">
+          <span class="eyebrow" style="color:var(--gold);">Barangay New Zaniga</span>
+          <h3>Hon. Elizabeth Paler Cruz</h3>
+          <p>Barangay Captain, Barangay New Zaniga</p>
+          <a class="btn btn-donate-blink" href="https://mandaluyong.gov.ph/government/barangays/barangay-new-zaniga/#:~:text=Barangay%20Officials&amp;text=Position&amp;text=Position&amp;text=Position&amp;text=Position" target="_blank" rel="noopener">Brgy New Zaniga Officials ↗</a>
         </div>
       </div>
     </div>
@@ -2017,6 +2041,60 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Single-page "router": show only one page's sections at a time ----
+  const PAGE_GROUPS = {
+    'home': ['christmas-announcement', 'home', 'home-quick'],
+    'donate': ['donate'],
+    'projects': ['projects'],
+    'cctv': ['cctv'],
+    'gpedro-street': ['gpedro-street'],
+    'hoa-dues': ['hoa-dues'],
+    'about': ['about'],
+    'contact': ['contact']
+  };
+  const ANCHOR_TO_PAGE = {};
+  Object.keys(PAGE_GROUPS).forEach(pageKey => {
+    PAGE_GROUPS[pageKey].forEach(id => { ANCHOR_TO_PAGE[id] = pageKey; });
+  });
+  // Sub-anchors living inside the "G. Pedro Street" page
+  ['gpedro-cleaning','gpedro-drainage','gpedro-mass','gpedro-signage','gpedro-solar','gpedro-submeter','gpedro-ethernet']
+    .forEach(id => { ANCHOR_TO_PAGE[id] = 'gpedro-street'; });
+
+  function pageKeyForHash(hash){
+    const id = (hash || '').replace('#', '');
+    if(!id) return 'home';
+    return ANCHOR_TO_PAGE[id] || 'home';
+  }
+
+  function showPage(pageKey){
+    if(!PAGE_GROUPS[pageKey]) pageKey = 'home';
+    Object.keys(PAGE_GROUPS).forEach(key => {
+      const visible = key === pageKey;
+      PAGE_GROUPS[key].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.toggle('page-visible', visible);
+      });
+    });
+  }
+
+  // Show the right page immediately on load (covers direct links / reloads with a hash)
+  showPage(pageKeyForHash(window.location.hash));
+
+  // Any click on an internal "#..." link switches pages before the browser's
+  // normal jump-to-anchor behavior runs, so the target is already visible.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(href === '#' || href === '') return;
+    showPage(pageKeyForHash(href));
+  }, true);
+
+  // Back/forward navigation and any other hash changes
+  window.addEventListener('hashchange', () => {
+    showPage(pageKeyForHash(window.location.hash));
+  });
 
   // ---- Year-tab switching (Projects + About, keyed by data-group) ----
   function wireTabs(group, attr){
