@@ -289,16 +289,16 @@
     .christmas-photo{width:280px;}
     .christmas-text p{max-width:none;}
   }
-  .captain-banner{
-    display:flex; align-items:center; gap:28px; margin-top:36px; padding-top:32px;
-    border-top:1px solid var(--line); flex-wrap:wrap;
+  .captain-card-hero{
+    flex-shrink:0; width:220px; text-align:center; background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18); border-radius:10px; padding:20px 16px; align-self:flex-start;
   }
-  .captain-photo{width:140px; height:140px; object-fit:cover; object-position:top center; border-radius:50%; border:4px solid var(--gold); flex-shrink:0; background:#fff;}
-  .captain-text{flex:1; min-width:240px;}
-  .captain-text h3{color:var(--navy-deep); font-size:1.3rem; margin:2px 0 2px;}
-  .captain-text p{color:var(--ink-soft); margin:0 0 14px; font-size:.95rem;}
-  @media (max-width:640px){
-    .captain-banner{flex-direction:column; text-align:center;}
+  .captain-card-hero .captain-photo{width:92px; height:92px; object-fit:cover; object-position:top center; border-radius:50%; border:3px solid var(--gold); background:#fff; margin:0 auto 12px;}
+  .captain-card-hero h3{color:#fff; font-size:1.05rem; margin:0 0 4px;}
+  .captain-card-hero p{color:#c7d4e3; margin:0 0 14px; font-size:.85rem;}
+  .captain-card-hero .btn-donate-blink{font-size:.82rem; padding:9px 14px;}
+  @media (max-width:900px){
+    .captain-card-hero{width:100%; margin-top:12px;}
   }
   .inline-video{
     display:block; max-width:360px; width:100%; border-radius:3px; border:1px solid var(--line);
@@ -664,6 +664,13 @@
           <a class="btn btn-outline" href="#contact">Contact the HOA</a>
         </div>
       </div>
+
+      <div class="captain-card-hero">
+        <img class="captain-photo" src="captain-liza-cruz.png" alt="Barangay Captain Elizabeth Paler Cruz" />
+        <h3>Hon. Elizabeth Paler Cruz</h3>
+        <p>Barangay Captain, Barangay New Zaniga</p>
+        <a class="btn btn-donate-blink" href="https://mandaluyong.gov.ph/government/barangays/barangay-new-zaniga/#:~:text=Barangay%20Officials&amp;text=Position&amp;text=Position&amp;text=Position&amp;text=Position" target="_blank" rel="noopener">Brgy New Zaniga Officials ↗</a>
+      </div>
     </div>
   </section>
 
@@ -684,16 +691,6 @@
           <h3>Emergency numbers</h3>
           <p>Police, fire, hospital, and disaster hotlines for Mandaluyong City, on hand when you need them.</p>
           <a href="#contact">Get emergency numbers →</a>
-        </div>
-      </div>
-
-      <div class="captain-banner">
-        <img class="captain-photo" src="captain-liza-cruz.png" alt="Barangay Captain Elizabeth Paler Cruz" />
-        <div class="captain-text">
-          <span class="eyebrow" style="color:var(--gold);">Barangay New Zaniga</span>
-          <h3>Hon. Elizabeth Paler Cruz</h3>
-          <p>Barangay Captain, Barangay New Zaniga</p>
-          <a class="btn btn-donate-blink" href="https://mandaluyong.gov.ph/government/barangays/barangay-new-zaniga/#:~:text=Barangay%20Officials&amp;text=Position&amp;text=Position&amp;text=Position&amp;text=Position" target="_blank" rel="noopener">Brgy New Zaniga Officials ↗</a>
         </div>
       </div>
     </div>
