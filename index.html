@@ -261,6 +261,19 @@
   @media (prefers-reduced-motion: reduce){
     .btn-donate-blink{ animation:none; }
   }
+  .btn-eco-blink{
+    display:inline-block; padding:12px 22px; border-radius:var(--radius);
+    text-decoration:none; font-weight:700; font-size:.95rem; border:2px solid #0f4c3a;
+    background:#1b8a63; color:#fff;
+    animation:eco-blink 1.1s steps(1,end) infinite;
+  }
+  @keyframes eco-blink{
+    0%, 49%{ background:#1b8a63; color:#fff; }
+    50%, 100%{ background:#145e44; color:#d6f5e8; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-eco-blink{ animation:none; }
+  }
   .donate-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;}
   .donate-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:24px;}
   .donate-card h3{font-size:1.15rem; margin-bottom:12px; color:var(--navy-deep);}
@@ -552,6 +565,15 @@
         <a href="#gpedro-solar">Street Solar Panel Installation</a>
         <a href="#gpedro-submeter">CCTV Sub-Meter Installation</a>
         <a href="#gpedro-ethernet">CCTV Ethernet Cable Re-layout</a>
+      </div>
+    </details>
+
+    <details>
+      <summary>Brgy New Zaniga <span class="caret">▾</span></summary>
+      <div class="dropdown">
+        <span class="sub-label">Activities</span>
+        <a href="#brgy-assembly">Barangay Assembly</a>
+        <a href="#trash-to-cashback">Trash to CashBack</a>
       </div>
     </details>
 
@@ -1103,6 +1125,50 @@
             <button type="submit" class="btn btn-gold comment-submit">Post comment</button>
           </form>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BRGY NEW ZANIGA ========== -->
+  <section id="brgy-new-zaniga" class="bg-green">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Brgy New Zaniga</span>
+        <h2>Activities</h2>
+        <p>Barangay-wide activities and programs that G. Pedro Street residents take part in alongside the rest of Barangay New Zaniga.</p>
+      </div>
+
+      <div id="brgy-assembly">
+        <div class="section-head" style="margin-top:8px;">
+          <h3 class="subsection-title">Barangay Assembly</h3>
+          <p>"Tayo na sa Barangay Assembly! Nagkakaisang Tinig, Makabuluhang Usapan, at Sama-samang Pagkilos para sa Ating Kuminidad." — 2nd Semester of C.Y. 2026 Barangay Assembly Day, held Saturday, November 21, 2026 at PVL Restaurant, with a segment on proper waste segregation (RA 9003) and the Trash to CashBack program.</p>
+        </div>
+        <p class="gallery-label">Barangay Assembly pictures</p>
+        <div class="gallery-grid" id="brgy-assembly-gallery">
+          <!-- images injected by JS -->
+        </div>
+
+        <div class="comment-section" data-comments-key="brgy-assembly">
+          <h3 class="comment-heading">Comments</h3>
+          <p class="comment-sub">Leave a kind word or a shout-out for the volunteers — let's keep it positive.</p>
+          <div class="comment-list"></div>
+          <form class="comment-form" onsubmit="return false;">
+            <input type="text" class="comment-name" placeholder="Your name" maxlength="60" required />
+            <textarea class="comment-text" placeholder="Write something nice..." maxlength="400" rows="3" required></textarea>
+            <div class="comment-error" role="alert"></div>
+            <button type="submit" class="btn btn-gold comment-submit">Post comment</button>
+          </form>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div id="trash-to-cashback">
+        <div class="section-head" style="margin-top:8px;">
+          <h3 class="subsection-title">Trash to CashBack</h3>
+          <p>An incentivized segregation-at-source program focusing on proper recyclables exchange and developing long-term solutions for environmental problems. Through sustainable means, we can help the community and the environment through the circular economy — Segregate → Recycle → Exchange → Collect → Redeem.</p>
+        </div>
+        <a class="btn btn-eco-blink" href="https://trashtocashback.com/" target="_blank" rel="noopener">♻️ Be an "Eco Warrior" ↗</a>
       </div>
     </div>
   </section>
@@ -2038,6 +2104,7 @@
     'projects': ['projects'],
     'cctv': ['cctv'],
     'gpedro-street': ['gpedro-street'],
+    'brgy-new-zaniga': ['brgy-new-zaniga'],
     'hoa-dues': ['hoa-dues'],
     'about': ['about'],
     'contact': ['contact']
@@ -2049,6 +2116,9 @@
   // Sub-anchors living inside the "G. Pedro Street" page
   ['gpedro-cleaning','gpedro-drainage','gpedro-mass','gpedro-signage','gpedro-solar','gpedro-submeter','gpedro-ethernet']
     .forEach(id => { ANCHOR_TO_PAGE[id] = 'gpedro-street'; });
+  // Sub-anchors living inside the "Brgy New Zaniga" page
+  ['brgy-assembly','trash-to-cashback']
+    .forEach(id => { ANCHOR_TO_PAGE[id] = 'brgy-new-zaniga'; });
 
   function pageKeyForHash(hash){
     const id = (hash || '').replace('#', '');
@@ -2364,6 +2434,29 @@
     });
   }
   buildXmasMeetingGallery('xmas-meeting-gallery');
+
+  // ---- Barangay Assembly gallery ----
+  const brgyAssemblyImages = Array.from({length: 10}, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    return 'brgy-assembly-' + n + '.jpg';
+  });
+  function buildBrgyAssemblyGallery(containerId){
+    const el = document.getElementById(containerId);
+    if(!el) return;
+    brgyAssemblyImages.forEach((src, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'View Barangay Assembly photo ' + (idx + 1));
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Barangay Assembly Day, photo ' + (idx + 1);
+      img.loading = 'lazy';
+      btn.appendChild(img);
+      btn.addEventListener('click', () => openLightbox(src, img.alt));
+      el.appendChild(btn);
+    });
+  }
+  buildBrgyAssemblyGallery('brgy-assembly-gallery');
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
